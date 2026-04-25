@@ -5,3 +5,15 @@
 }
 
 
+/* Hero section styles */
+.hero-section{
+    height: 90vh;
+    background-image: url('../images/banner-image1.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
