@@ -28,7 +28,31 @@
 <body>
 
     <!-- main section -->
-     <h1>hello login </h1>
+    <main>
+        <div class="login-container">
+            <h1 class="login-title">Login</h1>
+
+            <div class="login-form-container">
+                <form>
+                    <div class="form-input-group">
+                        <label for="email">Email <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="example@mail.com"
+                            required>
+                    </div>
+                    <div class="form-input-group">
+                        <label for="password">Password <span class="text-danger">*</span></label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="********"
+                            required>
+                    </div>
+                    <div>
+                        <button class="btn btn-small btn-success w-100">Login</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </main>
     <!-- main section ends -->
 
     <!-- Bootstrap JS Bundle -->
