@@ -26,13 +26,48 @@
 </head>
 
 <body>
+    <!-- Header section -->
+    <header>
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container py-2">
+                <a class="navbar-brand fw-bold" href="index.html">FetchStore</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="service.html">Our Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="signup.html">Signup</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Login</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Header section ends-->
 
     <!-- main section -->
     <main>
         <div class="login-container">
             <h1 class="login-title">Login</h1>
 
-            <div class="login-form-container">
+            <div class="login-form-container" data-aos="zoom-in">
                 <form>
                     <div class="form-input-group">
                         <label for="email">Email <span class="text-danger">*</span></label>
@@ -41,11 +76,22 @@
                     </div>
                     <div class="form-input-group">
                         <label for="password">Password <span class="text-danger">*</span></label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="********"
+                        <input type="password" class="form-control" id="password" name="password"
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$" 
+                            title="Must contain uppercase, lowercase, number, and special character"
+                            minlength="8"
+                            maxlength="16"
+                            placeholder="********"
                             required>
                     </div>
                     <div>
-                        <button class="btn btn-small btn-success w-100">Login</button>
+                        <button class="btn btn-small btn-success w-100 mb-3">Login</button>
+
+                    </div>
+
+                    <div class="d-flex flex-row justify-content-between">
+                        <a href="index.html" class="text-secondary">Back to Home</a>
+                        <a href="signup.html" class="text-light  ">Register</a>
                     </div>
 
                 </form>
