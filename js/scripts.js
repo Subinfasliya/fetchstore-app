@@ -31,8 +31,15 @@ const showError = (message) => {
 
 const displayProducts = (products) => {
   products.forEach((product) => {
+
+    const colDiv = document.createElement("div")
+    colDiv.classList.add("col-12","col-md-6","col-lg-3","mb-4")
+
+
     const card = document.createElement("div");
     card.classList.add("card");
+
+    colDiv.appendChild(card)
 
     const img = document.createElement("img");
     img.classList.add("card-img-top");
@@ -70,7 +77,7 @@ const displayProducts = (products) => {
 
     cardBody.appendChild(viewProduct);
 
-    productsContainer.appendChild(card);
+    productsContainer.appendChild(colDiv);
   });
 };
 
