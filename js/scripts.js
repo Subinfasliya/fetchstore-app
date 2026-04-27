@@ -1,8 +1,7 @@
 AOS.init();
 
 const productsContainer = document.getElementById("productsContainer");
-const loader = document.getElementById("loader")
-
+const loader = document.getElementById("loader");
 
 // API Url
 const BASE_URL = `https://fakestoreapi.com/products`;
@@ -10,17 +9,43 @@ const BASE_URL = `https://fakestoreapi.com/products`;
 // Default value of loading
 let isLoading = false;
 
+
+// Login Function
+const handleLogin = () =>{
+  const name = document.getElementById('name').value;
+  const password = document.getElementById('password').value;
+
+  const storedData = localStorage.getItem(username)
+
+  if(storedData.name === name && storedData.password){
+    console.log("Successfully loggedIn")
+  }else{
+    console.log("Please Regester first");
+    
+  }
+}
+
+
+// Shorting product description
+const shortedWord = (text, wordLimit = 10) => {
+  const words = text.split(" ");
+
+  return words.length > wordLimit
+    ? words.slice(0, wordLimit).join(" ") + "..."
+    : text;
+};
+
+
 // Loading Spinner
 const setLoading = (state) => {
   isLoading = state;
-  if(isLoading){
-    loader.style.display = "block"
-    productsContainer.style.display = "none"
-  }else{
-    loader.style.display = "none"
-    productsContainer.style.display = "block"
+  if (isLoading) {
+    loader.style.display = "block";
+    productsContainer.style.display = "none";
+  } else {
+    loader.style.display = "none";
+    productsContainer.style.display = "flex";
   }
-  
 };
 
 // Error message Showing function
@@ -31,20 +56,22 @@ const showError = (message) => {
 
 const displayProducts = (products) => {
   products.forEach((product) => {
-
-    const colDiv = document.createElement("div")
-    colDiv.classList.add("col-12","col-md-6","col-lg-3","mb-4")
-
+    const colDiv = document.createElement("div");
+    colDiv.classList.add("col-12", "col-md-6", "col-lg-3", "mb-4");
 
     const card = document.createElement("div");
     card.classList.add("card");
+    card.style.height = "520px";
+    card.style.overflow = "hidden";
 
-    colDiv.appendChild(card)
+    colDiv.appendChild(card);
 
     const img = document.createElement("img");
     img.classList.add("card-img-top");
     img.src = `${product.image}`;
     img.alt = `${product.title} Image`;
+    img.style.height = "250px";
+    img.style.objectFit = "contain";
 
     card.appendChild(img);
 
@@ -55,13 +82,15 @@ const displayProducts = (products) => {
 
     const cardTitle = document.createElement("h5");
     cardTitle.classList.add("card-title");
+    cardTitle.style.fontSize = '17px'
     cardTitle.textContent = `${product.title}`;
 
     cardBody.appendChild(cardTitle);
 
     const description = document.createElement("p");
     description.classList.add("card-text");
-    description.textContent = `${product.description}`;
+    description.style.fontSize = '16px'
+    description.textContent = shortedWord(product.description, 10);
 
     cardBody.appendChild(description);
 
@@ -82,11 +111,9 @@ const displayProducts = (products) => {
 };
 
 async function fetchProducts() {
-  
-    setLoading(true)
+  setLoading(true);
 
-    try {
-
+  try {
     const res = await fetch(`${BASE_URL}`);
 
     // API error (like 404, 500)
@@ -114,3 +141,8 @@ async function fetchProducts() {
 }
 
 fetchProducts();
+
+
+const loginBtn = document.getElementById('loginButton')
+
+loginBtn.addEventListener('click',handleLogin)
